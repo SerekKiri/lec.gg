@@ -7,7 +7,7 @@ import { MdSearch, MdMenu, MdKeyboardBackspace, MdPersonOutline } from 'react-ic
 
 export const Navigation = () => {
     return (
-        <div class="w-screen xl:w-1/5">
+        <div class="w-screen xl:w-1/5 xl:h-screen">
             <div class="flex flex-col items-center px-6 pt-3 xl:hidden">
                 <div class="flex w-full font-description text-xs justify-between mb-3">
                     <div class="flex">
