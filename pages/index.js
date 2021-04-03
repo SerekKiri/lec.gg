@@ -1,65 +1,39 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+import Image from 'next/image'
+
+// Layout
+import Store from '../layouts/store'
+
+
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <Store>
       <Head>
-        <title>Create Next App</title>
+        <title>Old LEC Store</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <div class="flex flex-col w-full min-h-screen h-full py-6 xl:py-0 xl:h-screen justify-center items-center bg-home">
+        <div class="mb-9">
+          <Image src="/home/logo.png" alt="home_logo" height="auto" width={390} />
         </div>
-      </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+        <span class="font-title font-bold text-5xl text-center uppercase">
+          Fake Lec Store
+        </span>
+
+        <span class="text-base font-description text-center mt-1">
+          This is a sample page that look like old lec store
+        </span>
+
+        <Link href="/all-products">
+          <a class="text-white text-lg mt-8 font-bold uppercase bg-primary py-4 px-6 rounded-xl">
+            Shop Now
+          </a>
+        </Link>
+      </div>
+    </Store>
   )
 }
