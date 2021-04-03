@@ -9,7 +9,8 @@ module.exports = {
       }),
       colors: {
         primary: '#00e5bf',
-        grey: '#f5f5f6'
+        grey: '#f5f5f6',
+        product: '#F2F2F2'
       },
       fontFamily: {
         title: ['Druk Wide', ...defaultTheme.fontFamily.sans],

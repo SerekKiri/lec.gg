@@ -1,13 +1,23 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
 
 // Icons
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { MdSearch, MdMenu, MdKeyboardBackspace, MdPersonOutline } from 'react-icons/md'
 
 export const Navigation = () => {
+    const [path, setPath] = useState('')
+    const router = useRouter()
+
+    useEffect(() => {
+        console.log(router)
+        setPath(router.route.replace("/", ""))
+    }, [router])
+
     return (
-        <div className="w-screen xl:w-1/5 xl:h-screen">
+        <div className="w-screen xl:w-1/5 xl:max-w-xs xl:h-screen">
             <div className="flex flex-col items-center px-6 pt-3 xl:hidden shadow-lg">
                 <div className="flex w-full font-description text-xs justify-between mb-3">
                     <div className="flex">
@@ -63,29 +73,34 @@ export const Navigation = () => {
                     </button>
                 </div>
 
-
                 <div className="flex flex-col mt-6 items-start h-full w-full text-left text-lg font-title uppercase">
                     <Link href="/">
-                        <a className="flex items-center pt-4 pb-3 text-primary font-bold hover:text-primary">
-                            <div className="transform rotate-180 text-3xl mr-5">
+                        <a className={`flex items-center pt-4 pb-3 font-bold hover:text-primary ${path === '' ? 'text-primary' : ''}`}>
+                            {path === '' ? <div className="transform rotate-180 text-3xl mr-5">
                                 <MdKeyboardBackspace />
-                            </div>
+                            </div> : ''}
                             Home
                         </a>
                     </Link>
 
                     <Link href="/all-products">
-                        <a className="pt-4 pb-3 font-bold hover:text-primary">
+                        <a className={`flex items-center pt-4 pb-3 font-bold hover:text-primary ${path === 'all-products' ? 'text-primary' : ''}`}>
+                            {path === 'all-products' ? <div className="transform rotate-180 text-3xl mr-5">
+                                <MdKeyboardBackspace />
+                            </div> : ''}
                             All products
                         </a>
                     </Link>
 
-                    <a href="https://lolesports.com" className="pt-4 pb-3 font-bold hover:text-primary">
+                    <a href="https://lolesports.com" className="flex items-center pt-4 pb-3 font-bold hover:text-primary">
                         lol esports
                     </a>
 
                     <Link href="/contact">
-                        <a className="pt-4 pb-3 font-bold hover:text-primary">
+                        <a className={`flex items-center pt-4 pb-3 font-bold hover:text-primary ${path === 'contact' ? 'text-primary' : ''}`}>
+                            {path === 'contact' ? <div className="transform rotate-180 text-3xl mr-5">
+                                <MdKeyboardBackspace />
+                            </div> : ''}
                             Contact
                         </a>
                     </Link>
