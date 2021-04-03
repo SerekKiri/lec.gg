@@ -7,22 +7,22 @@ import { MdSearch, MdMenu, MdKeyboardBackspace, MdPersonOutline } from 'react-ic
 
 export const Navigation = () => {
     return (
-        <div class="w-screen xl:w-1/5 xl:h-screen">
-            <div class="flex flex-col items-center px-6 pt-3 xl:hidden">
-                <div class="flex w-full font-description text-xs justify-between mb-3">
-                    <div class="flex">
-                        <MdPersonOutline class="text-base mr-1" />
+        <div className="w-screen xl:w-1/5 xl:h-screen">
+            <div className="flex flex-col items-center px-6 pt-3 xl:hidden shadow-lg">
+                <div className="flex w-full font-description text-xs justify-between mb-3">
+                    <div className="flex">
+                        <MdPersonOutline className="text-base mr-1" />
                         Account
                     </div>
 
-                    <div class="flex">
-                        <AiOutlineShoppingCart class="text-base mr-1" />
+                    <div className="flex">
+                        <AiOutlineShoppingCart className="text-base mr-1" />
                         (0 items)
                     </div>
                 </div>
 
-                <div class="w-full flex flex-row justify-between items-center py-2">
-                    <MdMenu class="text-4xl" />
+                <div className="w-full flex flex-row justify-between items-center py-2">
+                    <MdMenu className="text-4xl" />
                     <Image
                         src="/shoplogo-lec-1.png"
                         alt="shoplogo"
@@ -30,62 +30,64 @@ export const Navigation = () => {
                         height={50}
                     />
 
-                    <MdSearch class="text-4xl" />
+                    <MdSearch className="text-4xl" />
                 </div>
             </div>
 
-            <div class="hidden w-full px-10 py-6 justify-center items-center xl:flex flex-col">
-                <div class="flex w-full font-description text-xs justify-between mb-11">
-                    <div class="flex">
-                        <MdPersonOutline class="text-base mr-1" />
+            <div className="hidden w-full h-full px-10 py-6 justify-center items-center xl:flex flex-col shadow-xl">
+                <div className="flex w-full font-description text-xs justify-between mb-11">
+                    <div className="flex cursor-pointer	">
+                        <MdPersonOutline className="text-base mr-1" />
                         Account
                     </div>
 
-                    <div class="flex">
-                        <AiOutlineShoppingCart class="text-base mr-1" />
+                    <div className="flex cursor-pointer	">
+                        <AiOutlineShoppingCart className="text-base mr-1" />
                         (0 items)
                     </div>
                 </div>
 
-                <Image
-                    src="/shoplogo-lec-1.png"
-                    alt="shoplogo"
-                    width={70}
-                    height={140}
-                />
+                <div className="w-20">
+                    <Image
+                        src="/shoplogo-lec-1.png"
+                        alt="shoplogo"
+                        width="auto"
+                        height="auto"
+                    />
+                </div>
 
-                <div class="relative flex w-full items-center justify-end">
-                    <input id="search" name="search" placeholder="Search" class="mt-9 my-2 w-full outline-none bg-grey rounded-xl px-4 py-3 border-4 text-sm border-none" />
-                    <button class="absolute mt-7 mr-3">
+                <div className="relative flex w-full items-center justify-end">
+                    <input id="search" name="search" placeholder="Search" className="mt-9 my-2 w-full outline-none bg-grey rounded-xl px-4 py-3 border-4 text-sm border-none" />
+                    <button className="absolute mt-7 mr-3">
                         <MdSearch />
                     </button>
                 </div>
 
 
-                <div class="flex flex-col mt-6 items-start h-full w-full text-left text-lg font-title uppercase">
+                <div className="flex flex-col mt-6 items-start h-full w-full text-left text-lg font-title uppercase">
                     <Link href="/">
-                        <a class="flex items-center pt-4 pb-3 text-primary font-bold hover:text-primary">
-                            <div class="transform rotate-180 text-3xl mr-5">
+                        <a className="flex items-center pt-4 pb-3 text-primary font-bold hover:text-primary">
+                            <div className="transform rotate-180 text-3xl mr-5">
                                 <MdKeyboardBackspace />
                             </div>
-                        Home
-                    </a>
+                            Home
+                        </a>
                     </Link>
 
                     <Link href="/all-products">
-                        <a class="pt-4 pb-3 font-bold hover:text-primary">
+                        <a className="pt-4 pb-3 font-bold hover:text-primary">
                             All products
-                    </a>
+                        </a>
                     </Link>
 
-                    <a href="https://lolesports.com" class="pt-4 pb-3 font-bold hover:text-primary">
+                    <a href="https://lolesports.com" className="pt-4 pb-3 font-bold hover:text-primary">
                         lol esports
-                </a>
+                    </a>
 
                     <Link href="/contact">
-                        <a class="pt-4 pb-3 font-bold hover:text-primary">
+                        <a className="pt-4 pb-3 font-bold hover:text-primary">
                             Contact
-                    </a>
+                        </a>
                     </Link>
                 </div>
             </div>
