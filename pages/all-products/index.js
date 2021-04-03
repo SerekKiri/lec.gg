@@ -13,8 +13,8 @@ const fetcher = async (...args) => {
 export default function AllProducts() {
     const { data, error } = useSWR('/api/products', fetcher)
 
-    if (error) return <div className="w-full min-h-screen flex justify-center items-center">Data failed to load</div>
-    if (!data) return <div class="w-full min-h-screen flex justify-center items-center">loading...</div>
+    if (error) return <Store><div className="w-full min-h-screen flex justify-center items-center">Data failed to load</div></Store>
+    if (!data) return <Store><div class="w-full min-h-screen flex justify-center items-center">loading...</div></Store>
 
     return (
         <Store>
