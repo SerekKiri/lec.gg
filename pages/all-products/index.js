@@ -27,7 +27,11 @@ export default function AllProducts() {
                     {data.map((p) => {
                         return (
                             <div class="w-11/12 xl:w-72 overflow-hidden rounded-xl bg-product mx-auto my-4 xl:my-1 xl:mx-3 shadow-md hover:shadow-lg">
-                                <img src={p.pictures[0]} alt={p.name} class="rounded-t-xl" />
+                                <img src={p.pictures[0]}
+                                    onMouseOver={e => (e.currentTarget.src = p.pictures[1])}
+                                    onMouseOut={e => (e.currentTarget.src = p.pictures[0])}
+                                    alt={p.name} class="rounded-t-xl" />
+
 
                                 <div class="text-xl max-w-max overflow-hidden text-center truncate font-title px-2 pt-2">
                                     {p.name}
