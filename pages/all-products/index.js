@@ -22,8 +22,8 @@ export default function AllProducts() {
                 <title>All products</title>
             </Head>
 
-            <div className="w-full min-h-full max-h-screen overflow-hidden overflow-y-auto flex justify-center xl:pl-3">
-                <div className="min-h-full max-h-none w-full pt-1 pb-4 xl:pt-4 xl:pb-4 xl:flex xl:flex-wrap xl:flex-1 justify-center items-start xl:justify-start">
+            <div className="w-full min-h-full max-h-full xl:max-h-screen overflow-hidden overflow-y-auto flex justify-center xl:pl-3">
+                <div className="min-h-full max-h-none w-full pt-1 pb-2 xl:pt-4 xl:pb-4 xl:flex xl:flex-wrap xl:flex-1 justify-center items-start xl:justify-start">
                     {data.map((p) => {
                         return (
                             <div class="w-11/12 xl:w-72 overflow-hidden rounded-xl bg-product mx-auto my-4 xl:my-1 xl:mx-3 shadow-md hover:shadow-lg">
