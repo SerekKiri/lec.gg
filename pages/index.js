@@ -13,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="w-full min-h-screen h-full flex flex-col py-6 xl:py-0 justify-center items-center bg-home">
+      <div className="w-full min-h-screen h-full flex flex-col py-6 xl:py-0 mt-28 xl:mt-0 justify-center items-center bg-home">
         <div className="mb-9">
           <Image src="/home/logo.png" alt="home_logo" height="auto" width={390} />
         </div>

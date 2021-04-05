@@ -18,7 +18,7 @@ export const Navigation = () => {
 
     return (
         <div className="w-screen xl:w-1/5 xl:max-w-xs xl:h-screen">
-            <div className="flex flex-col items-center px-6 pt-3 xl:hidden shadow-lg">
+            <div className="w-full bg-white flex flex-col items-center px-6 pt-3 xl:hidden shadow-lg fixed">
                 <div className="flex w-full font-description text-xs justify-between mb-3">
                     <div className="flex">
                         <MdPersonOutline className="text-base mr-1" />
@@ -33,12 +33,17 @@ export const Navigation = () => {
 
                 <div className="w-full flex flex-row justify-between items-center py-2">
                     <MdMenu className="text-4xl" />
-                    <Image
-                        src="/shoplogo-lec-1.png"
-                        alt="shoplogo"
-                        width={25}
-                        height={50}
-                    />
+
+                    <Link href="/all-products">
+                        <a>
+                            <Image
+                                src="/shoplogo-lec-1.png"
+                                alt="shoplogo"
+                                width={25}
+                                height={50}
+                            />
+                        </a>
+                    </Link>
 
                     <MdSearch className="text-4xl" />
                 </div>
@@ -84,8 +89,8 @@ export const Navigation = () => {
                     </Link>
 
                     <Link href="/all-products">
-                        <a className={`flex items-center pt-4 pb-3 font-bold hover:text-primary ${path === 'all-products' ? 'text-primary' : ''}`}>
-                            {path === 'all-products' ? <div className="transform rotate-180 text-3xl mr-5">
+                        <a className={`flex items-center pt-4 pb-3 font-bold hover:text-primary ${path.includes('all-products') ? 'text-primary' : ''}`}>
+                            {path.includes('all-products') ? <div className="transform rotate-180 text-3xl mr-5">
                                 <MdKeyboardBackspace />
                             </div> : ''}
                             All products

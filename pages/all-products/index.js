@@ -1,4 +1,5 @@
 import useSWR from 'swr'
+import Link from 'next/link'
 import Head from 'next/head'
 
 // Layout
@@ -14,7 +15,7 @@ export default function AllProducts() {
     const { data, error } = useSWR('/api/products', fetcher)
 
     if (error) return <Store><div className="w-full min-h-screen flex justify-center items-center">Data failed to load</div></Store>
-    if (!data) return <Store><div class="w-full min-h-screen flex justify-center items-center">loading...</div></Store>
+    if (!data) return <Store><div className="w-full min-h-screen flex justify-center items-center">loading...</div></Store>
 
     return (
         <Store>
@@ -22,28 +23,29 @@ export default function AllProducts() {
                 <title>All products</title>
             </Head>
 
-            <div className="w-full min-h-full max-h-full xl:max-h-screen overflow-hidden overflow-y-auto flex justify-center xl:pl-3">
-                <div className="min-h-full max-h-none w-full pt-1 pb-2 xl:pt-4 xl:pb-4 xl:flex xl:flex-wrap xl:flex-1 justify-center items-start xl:justify-start">
+            <div className="w-full xl:max-h-screen overflow-hidden overflow-y-auto flex justify-center xl:pl-3 pt-28 pb-4 xl:pt-2 xl:pb-0 px-6 xl:px-0 xl:mt-0">
+                <div className="w-full min-h-full flex flex-col xl:flex-row xl:flex-wrap items-start  pt-2 xl:pt-0">
                     {data.map((p) => {
                         return (
-                            <div class="w-11/12 xl:w-72 overflow-hidden rounded-xl bg-product mx-auto my-4 xl:my-1 xl:mx-3 shadow-md hover:shadow-lg">
-                                <img src={p.pictures[0]}
-                                    onMouseOver={e => (e.currentTarget.src = p.pictures[1])}
-                                    onMouseOut={e => (e.currentTarget.src = p.pictures[0])}
-                                    alt={p.name} class="rounded-t-xl" />
+                            <Link href={`/all-products/${p.name}`}>
+                                <a className="w-full xl:w-72 rounded-xl bg-product mx-auto my-2 xl:my-2 xl:mx-3 shadow-md hover:shadow-lg">
+                                    <img src={p.pictures[0]}
+                                        onMouseOver={e => (e.currentTarget.src = p.pictures[1])}
+                                        onMouseOut={e => (e.currentTarget.src = p.pictures[0])}
+                                        alt={p.name} className="rounded-t-xl" />
 
-
-                                <div class="text-xl max-w-max overflow-hidden text-center truncate font-title px-2 pt-2">
-                                    {p.name}
-                                </div>
-                                <div class="text-gray-400 px-2 pt-1 pb-1">
-                                    €{p.price}
-                                </div>
-                            </div>
+                                    <div className="text-xl max-w-max overflow-hidden text-center truncate font-title px-2 pt-2">
+                                        {p.name}
+                                    </div>
+                                    <div className="text-gray-400 px-2 pt-1 pb-1">
+                                        €{p.price}
+                                    </div>
+                                </a>
+                            </Link>
                         )
                     })}
-                </div>
-            </div>
-        </Store>
+                </div >
+            </div >
+        </Store >
     )
 }
