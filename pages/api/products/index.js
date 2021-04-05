@@ -5,5 +5,5 @@ export default async (req, res) => {
         return snapshot.val()
     }).catch(err => { return res.status(500).json(err) })
 
-    res.status(200).json(data)
+    res.status(200).json(Object.values(data))
 }
