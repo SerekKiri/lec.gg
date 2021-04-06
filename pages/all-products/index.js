@@ -27,7 +27,7 @@ export default function AllProducts() {
                 <div className="w-full min-h-full flex flex-col xl:flex-row xl:flex-wrap items-start  pt-2 xl:pt-0">
                     {data.map((p) => {
                         return (
-                            <Link href={`/all-products/${p.name}`}>
+                            <Link href={`/all-products/${p.name}`} key={p.name}>
                                 <a className="w-full xl:w-72 rounded-xl bg-product mx-auto my-2 xl:my-2 xl:mx-3 shadow-md hover:shadow-lg">
                                     <img src={p.pictures[0]}
                                         onMouseOver={e => (e.currentTarget.src = p.pictures[1])}
