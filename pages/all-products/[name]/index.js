@@ -1,11 +1,10 @@
 import useSWR from 'swr'
-import Link from 'next/link'
 import Head from 'next/head'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
 // Layout
-import Store from '../../../layouts/store'
+import Store from 'layouts/store'
 
 // Icons
 import { AiOutlineCaretLeft, AiOutlineCaretRight } from 'react-icons/ai'

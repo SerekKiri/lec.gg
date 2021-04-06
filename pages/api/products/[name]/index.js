@@ -1,4 +1,4 @@
-import firebase from '../../../../utils/firebase'
+import firebase from 'utils/firebase'
 
 export default async (req, res) => {
     if (!req.query.name) return res.status(400).send()

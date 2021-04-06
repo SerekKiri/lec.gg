@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 
 // Layout
-import Store from '../../layouts/store'
+import Store from 'layouts/store'
 
 const fetcher = async (...args) => {
     const res = await fetch(...args)

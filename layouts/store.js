@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 // Components
-import { Navigation } from '../components/navigation'
+import { Navigation } from 'components/navigation'
 
 export default function Store({ children }) {
     return (

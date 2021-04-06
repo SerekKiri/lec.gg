@@ -1,4 +1,4 @@
-import firebase from '../../../utils/firebase'
+import firebase from 'utils/firebase'
 
 export default async (req, res) => {
     const data = await firebase.database().ref('/').get().then((snapshot) => {

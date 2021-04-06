@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 // Layout
-import Store from '../layouts/store'
+import Store from 'layouts/store'
 
 export default function Home() {
   return (
