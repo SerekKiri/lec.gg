@@ -7,12 +7,11 @@ import { useState, useEffect } from 'react'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { MdSearch, MdMenu, MdKeyboardBackspace, MdPersonOutline } from 'react-icons/md'
 
-export const Navigation = () => {
+const Navigation = ({ items }) => {
     const [path, setPath] = useState('')
     const router = useRouter()
 
     useEffect(() => {
-        console.log(router)
         setPath(router.route.replace("/", ""))
     }, [router])
 
@@ -25,10 +24,12 @@ export const Navigation = () => {
                         Account
                     </div>
 
-                    <div className="flex">
-                        <AiOutlineShoppingCart className="text-base mr-1" />
-                        (0 items)
-                    </div>
+                    <Link href="/cart">
+                        <a className={`flex ${path === 'cart' ? 'text-primary' : ''}`}>
+                            <AiOutlineShoppingCart className="text-base mr-1" />
+                        ({items} items)
+                        </a>
+                    </Link>
                 </div>
 
                 <div className="w-full flex flex-row justify-between items-center py-2">
@@ -56,10 +57,12 @@ export const Navigation = () => {
                         Account
                     </div>
 
-                    <div className="flex cursor-pointer	">
-                        <AiOutlineShoppingCart className="text-base mr-1" />
-                        (0 items)
-                    </div>
+                    <Link href="/cart">
+                        <a className={`flex ${path === 'cart' ? 'text-primary' : ''}`}>
+                            <AiOutlineShoppingCart className="text-base mr-1" />
+                        ({items} items)
+                        </a>
+                    </Link>
                 </div>
 
                 <div className="w-20">
@@ -114,3 +117,5 @@ export const Navigation = () => {
         </div>
     )
 }
+
+export default Navigation

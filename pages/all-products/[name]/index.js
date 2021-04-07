@@ -1,7 +1,12 @@
 import useSWR from 'swr'
 import Head from 'next/head'
-import { useState } from 'react'
+import { connect } from 'react-redux'
 import { useRouter } from 'next/router'
+import { bindActionCreators } from 'redux'
+import { useState, useEffect } from 'react'
+
+// Actions
+import { addItem } from 'store/cart/actions'
 
 // Layout
 import Store from 'layouts/store'
@@ -16,12 +21,23 @@ const fetcher = async (...args) => {
     return res.json()
 }
 
-export default function Product() {
+function Product({ addItem }) {
     const router = useRouter()
-    const [size, setSize] = useState('L')
+    const [added, setAdded] = useState(false)
+    const [product, setProduct] = useState({})
     const [picture, setPicture] = useState(0)
-    const [quantity, setQuantity] = useState(1)
     const { data, error } = useSWR(`/api/products/${router.query.name}`, fetcher)
+
+    useEffect(() => {
+        if (!data) return
+        setProduct({ ...data, size: data.sizes[0], quantity: 1 })
+    }, [data])
+
+    const add = () => {
+        setAdded(true)
+        setTimeout(() => setAdded(false), 2000)
+        addItem(product)
+    }
 
     if (error) return <Store><div className="w-full min-h-screen flex justify-center items-center">Data failed to load</div></Store>
     if (!data) return <Store><div className="w-full min-h-screen flex justify-center items-center">loading...</div></Store>
@@ -61,7 +77,7 @@ export default function Product() {
                     <div className="w-full flex font-title flex-wrap">
                         {data.sizes.map(s => {
                             return (
-                                <div className={`px-4 py-2 w-auto mt-1 mr-2 rounded-lg font-bold ${s === size ? 'bg-primary text-white' : 'bg-product'}`} onClick={() => setSize(s)}>{s}</div>
+                                <div key={s} className={`px-4 py-2 w-auto mt-1 mr-2 rounded-lg font-bold ${s === product.size ? 'bg-primary text-white' : 'bg-product'}`} onClick={() => setProduct({ ...product, size: s })}>{s}</div>
                             )
                         })}
                     </div>
@@ -69,23 +85,34 @@ export default function Product() {
                         Quantity:
                     </div>
                     <div className="w-min flex flex-row bg-product rounded-lg py-1">
-                        <div className="min-h-full flex items-center px-1" onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}>
+                        <div className="min-h-full flex items-center px-1" onClick={() => setProduct({ ...product, quantity: product.quantity > 1 ? product.quantity - 1 : 1 })}>
                             <AiOutlineCaretLeft />
                         </div>
                         <div className="h-full w-full  font-sans font-bold text-lg text-gray-500 px-2 py-1">
-                            {quantity}
+                            {product.quantity}
                         </div>
-                        <div className="min-h-full flex items-center px-1" onClick={() => setQuantity(quantity < 999 ? quantity + 1 : 999)}>
+                        <div className="min-h-full flex items-center px-1" onClick={() => setProduct({ ...product, quantity: product.quantity < 999 ? product.quantity + 1 : 999 })}>
                             <AiOutlineCaretRight />
                         </div>
                     </div>
                     <div className="mt-6 mb-2 ml-auto">
-                        <button className="bg-primary uppercase text-white font-title font-bold px-4 py-2 rounded-xl">
+                        <button className="bg-primary uppercase text-white font-title fixed bottom-2 focus:outline-none xl:bottom-auto right-4 xl:right-28 font-bold px-4 py-2 rounded-xl" onClick={() => add()}>
+                            <div className={`${added ? 'flex justify-center' : 'hidden'} absolute left-6 bottom-12 w-18 text-primary bg-white px-4 py-1 rounded-xl`}>
+                                Added!
+                            </div>
                             Add to cart
                         </button>
                     </div>
                 </div>
             </div>
-        </Store>
+        </Store >
     )
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addItem: bindActionCreators(addItem, dispatch),
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Product)
