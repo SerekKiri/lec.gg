@@ -35,7 +35,7 @@ const Cart = ({ items, removeItem }) => {
                     {items.map((i, n) => {
                         return (
                             <div className="w-full flex flex-col xl:flex-row rounded-xl bg-product my-1" key={n}>
-                                <div className="w-full xl:w-1/12 rounded-l-xl">
+                                <div className="w-full xl:w-1/12 rounded-l-xl px-2">
                                     <img src={i.pictures[0]} alt={n} className="rounded-l-xl py-2" />
                                 </div>
 
