@@ -61,9 +61,10 @@ const Cart = ({ items, removeItem }) => {
                         )
                     })}
                 </div>
-                <div className="w-full flex justify-end items-end px-6 pb-3 text-2xl font-bold font-title">
-                    Total: {total}€
-                </div>
+                {items.length > 0 ?
+                    <div className="w-full flex justify-end items-end px-6 pb-3 text-2xl font-bold font-title">
+                        Total: {total}€
+                </div> : <div className="px-5">You haven't added any products yet</div>}
             </div>
         </Store>
     )
