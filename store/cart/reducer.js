@@ -22,7 +22,7 @@ export default function reducer(state = cartInitialState, action) {
                 ...state,
                 items: [...state.items.filter(i => i.name !== action.payload)]
             }
-        case TYPES.SET:
+        case TYPES.SET_ITEMS:
             return {
                 ...state,
                 items: action.payload

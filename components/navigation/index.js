@@ -19,10 +19,12 @@ const Navigation = ({ items }) => {
         <div className="w-screen xl:w-1/5 xl:max-w-xs xl:h-screen">
             <div className="w-full bg-white flex flex-col items-center px-6 pt-3 xl:hidden shadow-lg fixed">
                 <div className="flex w-full font-description text-xs justify-between mb-3">
-                    <div className="flex">
-                        <MdPersonOutline className="text-base mr-1" />
-                        Account
-                    </div>
+                    <Link href="/account">
+                        <a className={`flex ${path === 'account' ? 'text-primary' : ''}`}>
+                            <MdPersonOutline className="text-base mr-1" />
+                            Account
+                        </a>
+                    </Link>
 
                     <Link href="/cart">
                         <a className={`flex ${path === 'cart' ? 'text-primary' : ''}`}>
@@ -52,10 +54,12 @@ const Navigation = ({ items }) => {
 
             <div className="hidden w-full h-full px-10 py-6 justify-center items-center xl:flex flex-col shadow-xl">
                 <div className="flex w-full font-description text-xs justify-between mb-11">
-                    <div className="flex cursor-pointer	">
-                        <MdPersonOutline className="text-base mr-1" />
-                        Account
-                    </div>
+                    <Link href="/account">
+                        <a className={`flex ${path === 'account' ? 'text-primary' : ''}`}>
+                            <MdPersonOutline className="text-base mr-1" />
+                            Account
+                        </a>
+                    </Link>
 
                     <Link href="/cart">
                         <a className={`flex ${path === 'cart' ? 'text-primary' : ''}`}>

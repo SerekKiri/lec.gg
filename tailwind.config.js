@@ -10,7 +10,9 @@ module.exports = {
       colors: {
         primary: '#00e5bf',
         grey: '#f5f5f6',
-        product: '#F2F2F2'
+        product: '#F2F2F2',
+        gradLeft: '#5CC5D9',
+        gradRight: '#72EAC7'
       },
       fontFamily: {
         title: ['Druk Wide', ...defaultTheme.fontFamily.sans],

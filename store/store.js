@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 import thunkMiddleware from 'redux-thunk'
 import cart from './cart/reducer'
+import auth from './auth/reducer'
 
 const bindMiddleware = (middleware) => {
     if (process.env.NODE_ENV !== 'production') {
@@ -13,7 +14,8 @@ const bindMiddleware = (middleware) => {
 }
 
 const combinedReducer = combineReducers({
-    cart
+    cart,
+    auth,
 })
 
 const reducer = (state, action) => {

@@ -5,14 +5,17 @@ import { useEffect } from 'react'
 
 // Actions
 import { readCart } from 'store/cart/actions'
+import { readAuth } from 'store/auth/actions'
 
 // Components
 import Navigation from 'components/navigation'
 
-function Store({ children, items, readCart }) {
+function Store({ children, items, readCart, readAuth }) {
     useEffect(() => {
         readCart()
+        readAuth()
     }, [])
+
     return (
         <div className="w-screen xl:flex overflow-hidden">
             <Head>
@@ -32,7 +35,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        readCart: bindActionCreators(readCart, dispatch)
+        readCart: bindActionCreators(readCart, dispatch),
+        readAuth: bindActionCreators(readAuth, dispatch)
     }
 }
 
